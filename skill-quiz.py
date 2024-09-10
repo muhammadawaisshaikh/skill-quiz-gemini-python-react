@@ -36,6 +36,16 @@ async def generate_skill_quiz(tech_stack: TechStackRequest):
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
+
+# Create a GET endpoint to inform users about the correct usage
+@app.get("/generate-skill-quiz")
+async def get_info():
+    return {
+        "message": "To generate a skill quiz, use the POST method at /generate-skill-quiz with a JSON object containing the technology stack.",
+        "example": {
+            "stack": "Python, FastAPI, and Google Generative AI"
+        }
+    }
     
 # To run the app with Uvicorn
 # if __name__ == "__main__":
